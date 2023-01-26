@@ -47,3 +47,53 @@ NODE *Ins_last(NODE *first, int data){
 }
 
 //Deleting the first node
+NODE *del_first(NODE *first){
+    NODE *temp;
+    if(first == NULL){
+        printf("Empty List\n");
+        exit(0);
+    }
+    else{
+        temp = first;
+        first = first->next;
+        printf("Node with data : %d is deleted\n", temp->info);
+        free(temp);
+    }
+    return first;
+}
+
+//Deleting last node
+NODE *del_last(NODE *first){
+    NODE *temp, *prev = NULL;
+    if(first == NULL){
+        printf("Empty List");
+        exit(0);
+    }
+    else{
+        temp = first;
+        while(temp->next != NULL){
+            prev = temp;
+            temp = temp->next;
+        }
+        if(prev == NULL)
+            first = NULL;
+        else
+            prev->next = NULL;
+        printf("Node with data : %d is deleted\n", temp->info);
+        free(temp);
+    }
+    return first;
+}
+
+//Displaying the contents of SLL
+void display(NODE *first){
+    if(first == NULL){
+        printf('Empty List\n');
+        exit(0);
+    }
+    printf("List contents\n");
+    while(first != NULL){
+        printf("%d->",first->info);
+        first = first->next;
+    }
+}

@@ -15,10 +15,10 @@ NODE *getNode(void){
     return temp;
 }
 
-//Freeing the memory of a node
-NODE *freeNode(NODE *temp){
+//Freeing memory for a node
+void freeNode(NODE *temp){
     free(temp);
-} 
+}
 
 //Inserting a new node at the beginning
 NODE *Ins_first(NODE *first, int data){
@@ -26,15 +26,16 @@ NODE *Ins_first(NODE *first, int data){
     newnode = (NODE *)malloc(sizeof(NODE));
     newnode->info = data;
     newnode->next = first;
-    printf("%d is inserted\n", data);
-    return first;
+    printf("%d got inserted\n", data);
+    return newnode;
 }
 
 //Inserting a new node at the end
-NODE *Ins_last(NODE *first, int data){
+NODE *Ins_end(NODE *first, int data){
     NODE *newnode, *temp;
     newnode = (NODE *)malloc(sizeof(NODE));
     newnode->info = data;
+    newnode->next = NULL;
     if(first == NULL)
         first = newnode;
     else{
@@ -43,7 +44,7 @@ NODE *Ins_last(NODE *first, int data){
             temp = temp->next;
         temp->next = newnode;
     }
-    printf("%d is inserted\n", data);
+    printf("%d got inserted\n", data);
     return first;
 }
 
@@ -51,11 +52,11 @@ NODE *Ins_last(NODE *first, int data){
 NODE *del_first(NODE *first){
     NODE *temp;
     if(first == NULL)
-        printf("Empty list\n");
+        printf("Empty List\n");
     else{
         temp = first;
         first = first->next;
-        printf("The node with data: %d is deleted\n", temp->info);
+        printf("Node with data : %d is deleted\n", temp->info);
         free(temp);
     }
     return first;
@@ -63,7 +64,7 @@ NODE *del_first(NODE *first){
 
 //Deleting the last node
 NODE *del_last(NODE *first){
-    NODE *prev = NULL, *temp;
+    NODE *temp, *prev = NULL;
     if(first == NULL)
         printf("Empty List\n");
     else{
@@ -84,13 +85,45 @@ NODE *del_last(NODE *first){
 
 //Displaying the elements of SLL
 void display(NODE *first){
-    if(first == NULL)
-        printf("Empty list\n");
+    NODE *temp;
+    if(first == NULL){
+        printf("Empty List\n");
+        return;
+    }
     else{
-        printf("Contents of the list are\n");
-        while(first != NULL){
-            printf("%d->", first->info);
-            first = first->next;
+        temp = first;
+        printf("Elements of SLL :\n");
+        while(temp->next != NULL){
+            printf("%d->", temp->info);
+            temp = temp->next;
         }
     }
+} 
+
+int main(){
+    NODE *first = NULL;
+    int choice, data;
+    while(1){
+        printf("\n\n1:Ins@first\n2:Ins@last\n3:Del@first\n4:Del@last\n5:Display\n6:Exit\nEnter your choice\n");
+        scanf("%d", &choice);
+        switch(choice){
+            case 1: printf("Enter the data\n");
+                    scanf("%d", &data);
+                    first = Ins_first(first, data);
+                    break;
+            case 2: printf("Enter the data\n");
+                    scanf("%d", &data);
+                    first = Ins_end(first, data);
+                    break;
+            case 3: first = del_first(first);
+                    break;
+            case 4: first = del_last(first);
+                    break;
+            case 5: display(first);
+                    break;
+            case 6: exit(0);
+            default: printf("Invalid Choice\n");
+        }
+    }
+    return 0;
 }

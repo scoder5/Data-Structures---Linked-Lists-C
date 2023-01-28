@@ -48,7 +48,38 @@ NODE *Del_first(NODE *first){
     return first;
 }
 
-//Displaying the contents of SLL
+//Displaying the contents of Stack
 void display(NODE *first){
-    
+    if(first == NULL)
+        printf("Stack is empty\n");
+    else{
+        printf("Contents of stack\n");
+        while(first != NULL){
+            printf("%d -> ", first->info);
+            first = first->next;
+        }
+    }
+}
+
+int main(){
+    NODE *first = NULL;
+    int data, choice;
+    while(1){
+        printf("\n1:PUSH\n2:POP\n3:Display\n4:Exit\n");
+        printf("Enter the choice\n");
+        scanf("%d", &choice);
+        switch(choice){
+            case 1  :printf("Enter the data to be pushed\n");
+                     scanf("%d", &data);
+                     first = Ins_first(first, data);
+                     break;
+            case 2  :first = Del_first(first);
+                     break;
+            case 3  :display(first);
+                     break;
+            case 4  :exit(0);
+            default :printf("Invalid Choice\n");
+        }
+    }
+    return 0;
 }

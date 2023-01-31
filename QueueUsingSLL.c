@@ -6,7 +6,7 @@
 //A structure containing a member which is a pointer to the same structure is called self referential structure.
 typedef struct node{
     int info;
-    struct NODE *next;
+    struct node *next;
 }NODE;
 
 //Ins_last() and Delete_first() routines are used to show FIFO

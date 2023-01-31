@@ -6,7 +6,7 @@
 //A structure containing a member which is a pointer to the same structure is called self referential structure.
 typedef struct node{
     int info;
-    struct NODE *next;
+    struct node next;
 }NODE;
 
 //Allocating memory for a newnode

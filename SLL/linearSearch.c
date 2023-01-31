@@ -3,7 +3,7 @@
 
 typedef struct node{
     int info;
-    struct NODE *next;
+    struct node *next;
 }NODE;
 
 NODE *search(NODE *first, int key){

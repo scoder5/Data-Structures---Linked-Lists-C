@@ -4,7 +4,7 @@
 
 typedef struct node{
     int info;
-    struct NODE *next;
+    struct node *next;
 }NODE;
 
 NODE *Insert(NODE *first, int data){

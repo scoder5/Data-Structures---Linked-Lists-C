@@ -5,65 +5,65 @@
 //A structure containing a member which is a pointer to the same structure is called self referential structure.
 typedef struct node{
     int info;
-    struct NODE *next;
+    struct node *next;
 }NODE;
 
 //Allocating memory to a node
 NODE *getNode(void){
-    NODE *temp;
-    temp = (NODE *)malloc(sizeof(NODE));
-    return temp;
+    NODE *newnode;
+    newnode = (NODE *)malloc(sizeof(NODE));
+    return newnode;
 }
 
-//Freeing memory for a node
-void freeNode(NODE *temp){
+//Freeing the memory of a node
+void FreeNode(NODE *temp){
     free(temp);
 }
 
 //Inserting a new node at the beginning
-NODE *Ins_first(NODE *first, int data){
+NODE *Ins_last(NODE *first, int data){
     NODE *newnode;
     newnode = (NODE *)malloc(sizeof(NODE));
     newnode->info = data;
     newnode->next = first;
-    printf("%d got inserted\n", data);
+    print("Node with data %d is inserted\n", data);
     return newnode;
 }
 
 //Inserting a new node at the end
-NODE *Ins_end(NODE *first, int data){
+NODE *Ins_last(NODE *first, int data){
     NODE *newnode, *temp;
     newnode = (NODE *)malloc(sizeof(NODE));
     newnode->info = data;
     newnode->next = NULL;
-    if(first == NULL)
+    if(first != NULL)
         first = newnode;
     else{
         temp = first;
-        while(temp->next != NULL)
+        while(temp != NULL)
             temp = temp->next;
         temp->next = newnode;
     }
-    printf("%d got inserted\n", data);
+    printf("Node with data %d is inserted\n", data);
     return first;
 }
 
 //Deleting the first node
-NODE *del_first(NODE *first){
+NODE *Del_first(NODE *first){
     NODE *temp;
     if(first == NULL)
         printf("Empty List\n");
     else{
         temp = first;
         first = first->next;
-        printf("Node with data : %d is deleted\n", temp->info);
+        printf("Node with data %d is deleted\n", temp->info);
         free(temp);
     }
     return first;
 }
 
 //Deleting the last node
-NODE *del_last(NODE *first){
+NODE *Del_last(NODE *first){
     NODE *temp, *prev = NULL;
     if(first == NULL)
         printf("Empty List\n");
@@ -75,7 +75,7 @@ NODE *del_last(NODE *first){
         }
         if(prev == NULL)
             first = NULL;
-        else
+        else    
             prev->next = NULL;
         printf("Node with data %d is deleted\n", temp->info);
         free(temp);
@@ -84,21 +84,19 @@ NODE *del_last(NODE *first){
 }
 
 //Displaying the elements of SLL
-void display(NODE *first){
-    NODE *temp;
+void Display(NODE *first){
     if(first == NULL){
         printf("Empty List\n");
         return;
     }
     else{
-        temp = first;
-        printf("Elements of SLL :\n");
-        while(temp->next != NULL){
-            printf("%d->", temp->info);
-            temp = temp->next;
+        printf("Contents of SLL\n");
+        while(first != NULL){
+            printf("%d->", first->info);
+            first = first->next;
         }
     }
-} 
+}
 
 int main(){
     NODE *first = NULL;

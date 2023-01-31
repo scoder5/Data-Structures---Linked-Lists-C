@@ -18,3 +18,17 @@ NODE *search(NODE *first, int key){
             printf("Node with key %d found\n", key);
     }
 }
+
+void Display(NODE *first){
+    if(first == NULL){
+        printf("Empty list\n");
+        return;
+    }
+    else{
+        while(first != NULL){
+            if(100 <= first->info <= 200)
+                printf("%d->", first->info);
+            first = first->next;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-//A list in which the elements are arranged in some order is referred to as an ordered list. 
+//A list in which the elements are arranged in some order is referred to as an ordered list.
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -7,6 +7,7 @@ typedef struct node{
     struct node *next;
 }NODE;
 
+//Insertion operation for ordered LL
 NODE *Insert(NODE *first, int data){
     NODE *newnode, *temp, *prev;
     newnode = (NODE *)malloc(sizeof(NODE));

@@ -2,14 +2,15 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+//Representation of a node in SLL
 typedef struct node{
     int info;
     struct node *next;
 }NODE;
 
-//Insertion operation for ordered LL
+//Ascending ordered List Construction
 NODE *Insert(NODE *first, int data){
-    NODE *newnode, *temp, *prev;
+    NODE *temp, *prev, *newnode;
     newnode = (NODE *)malloc(sizeof(NODE));
     newnode->info = data;
     if(first == NULL || data < first->info){

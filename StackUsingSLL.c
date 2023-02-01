@@ -50,8 +50,10 @@ NODE *Del_first(NODE *first){
 
 //Displaying the contents of Stack
 void display(NODE *first){
-    if(first == NULL)
+    if(first == NULL){
         printf("Stack is empty\n");
+        return;
+    }
     else{
         printf("Contents of stack\n");
         while(first != NULL){

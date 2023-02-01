@@ -43,8 +43,10 @@ NODE *Del_first(NODE *first){
 
 //Display Nodes
 void display(NODE *first){
-    if(first == NULL)
+    if(first == NULL){
         printf("Empty Queue\n");
+        return;
+    }
     else{
         printf("Queue Contents\n");
         while(first != NULL){

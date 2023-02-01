@@ -10,9 +10,10 @@ typedef struct node{
 
 //Ascending ordered List Construction
 NODE *Insert(NODE *first, int data){
-    NODE *temp, *prev, *newnode;
+    NODE *newnode, *temp, *prev;
     newnode = (NODE *)malloc(sizeof(NODE));
     newnode->info = data;
+    
     if(first == NULL || data < first->info){
         newnode->next = first;
         first = newnode;
@@ -24,7 +25,7 @@ NODE *Insert(NODE *first, int data){
             temp = temp->next;
         }
         if(temp == NULL || data != temp->info){
-            prev->next = newnode;
+            temp->next = newnode;
             newnode->next = temp;
         }
     }

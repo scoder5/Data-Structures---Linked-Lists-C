@@ -12,8 +12,8 @@ typedef struct node{
 NODE *Insert(NODE *root, int data){
     NODE *newnode, *temp, *parent;
     newnode = (NODE *)malloc(sizeof(NODE));
-    newnode->info = data;
     newnode->lchild = newnode->rchild = NULL;
+    newnode->info = data;
     if(root == NULL)
         root = newnode;
     else{
@@ -22,10 +22,10 @@ NODE *Insert(NODE *root, int data){
             parent = temp;
             if(data > temp->info)
                 temp = temp->rchild;
-            else if(data < temp->info)
+            else if(data < temp->lchild)
                 temp = temp->lchild;
             else{
-                printf("Data %d already exists in the tree\n", data);
+                printf("Data %d already exists in the BST\n", data);
                 return root;
             }
         }
@@ -40,8 +40,10 @@ NODE *Insert(NODE *root, int data){
 
 //Inorder Traversal
 void Inorder(NODE *root){
-    if(root == NULL)
+    if(root == NULL){
+        printf("Empty Tree\n");
         return;
+    }
     Inorder(root->lchild);
     printf("%d \n", root->info);
     Inorder(root->rchild);
@@ -49,8 +51,10 @@ void Inorder(NODE *root){
 
 //Preorder Traversal
 void Preorder(NODE *root){
-    if(root == NULL)
+    if(root == NULL){
+        printf("Empty Tree\n");
         return;
+    }
     printf("%d \n", root->info);
     Preorder(root->lchild);
     Preorder(root->rchild);
@@ -58,8 +62,10 @@ void Preorder(NODE *root){
 
 //Postorder Traversal
 void Postorder(NODE *root){
-    if(root == NULL)
+    if(root == NULL){
+        printf("Empty Tree\n");
         return;
+    }
     Postorder(root->lchild);
     Postorder(root->rchild);
     printf("%d \n", root->info);

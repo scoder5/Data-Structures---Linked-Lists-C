@@ -25,7 +25,7 @@ NODE *Insert(NODE *first, int data){
             temp = temp->next;
         }
         if(temp == NULL || data != temp->info){
-            temp->next = newnode;
+            prev->next = newnode;
             newnode->next = temp;
         }
     }
